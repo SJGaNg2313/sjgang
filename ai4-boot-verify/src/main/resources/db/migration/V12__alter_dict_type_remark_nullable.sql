@@ -1,0 +1,2 @@
+ALTER TABLE `sys_dict_type`
+    MODIFY COLUMN `remark` VARCHAR(500) DEFAULT NULL COMMENT '备注';

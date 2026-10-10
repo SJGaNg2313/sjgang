@@ -1,0 +1,187 @@
+package com.ai4.common.exception;
+
+/**
+ * 集中维护项目错误码及默认提示。
+ */
+public enum ErrorCode {
+    SKILL_NAME_ALREADY_EXISTS("SKILL_NAME_ALREADY_EXISTS", "Skill名称已存在"),
+    PARTNER_NAME_ALREADY_EXISTS("PARTNER_NAME_ALREADY_EXISTS", "合伙人名称已存在"),
+    PARTNER_CONCURRENT_MODIFICATION(
+            "PARTNER_CONCURRENT_MODIFICATION",
+            "合伙人信息已被其他操作修改，请刷新后重试"
+    ),
+    PARTNER_NOT_FOUND("PARTNER_NOT_FOUND", "合伙人不存在"),
+    PARTNER_IN_USE("PARTNER_IN_USE", "合伙人已绑定项目，不能删除"),
+    PARTNER_SKILL_INVALID("PARTNER_SKILL_INVALID", "存在无效或已删除的Skill"),
+    PARTNER_SKILL_DUPLICATED("PARTNER_SKILL_DUPLICATED", "不能重复选择同一个Skill"),
+
+    MENU_ASSIGNED_TO_ROLE("MENU_ASSIGNED_TO_ROLE", "菜单已分配给角色，请先解除授权"),
+    MENU_PARENT_INVALID("MENU_PARENT_INVALID", "父菜单不能是当前菜单或其子菜单"),
+    MENU_HAS_CHILDREN("MENU_HAS_CHILDREN", "存在子菜单，不能删除"),
+
+    VALIDATION_FAILED("VALIDATION_FAILED", "请求参数校验失败"),
+    INVALID_REQUEST("INVALID_REQUEST", "请求体格式错误"),
+    INTERNAL_ERROR("INTERNAL_ERROR", "服务器内部错误"),
+
+    USERNAME_ALREADY_EXISTS("USERNAME_ALREADY_EXISTS", "用户名已存在"),
+    USER_NOT_FOUND("USER_NOT_FOUND","用户不存在"),
+    INVALID_USERNAME_OR_PASSWORD("INVALID_USERNAME_OR_PASSWORD","用户名或密码错误"),
+    CAPTCHA_REQUIRED("CAPTCHA_REQUIRED", "请先完成图形验证码"),
+    CAPTCHA_INVALID("CAPTCHA_INVALID", "图形验证码错误或已失效"),
+
+    ROLE_NOT_FOUND("ROLE_NOT_FOUND", "角色不存在"),
+    ROLE_CODE_ALREADY_EXISTS("ROLE_CODE_ALREADY_EXISTS", "角色编码已存在"),
+    ROLE_HAS_USERS("ROLE_HAS_USERS", "角色已分配给用户，请先解除关联"),
+    SUPER_ADMIN_PROTECTED("SUPER_ADMIN_PROTECTED", "超级管理员角色不允许执行此操作"),
+    INVALID_ROLE_STATUS("INVALID_ROLE_STATUS", "角色状态只能是0或1"),
+    ROLE_DISABLED("ROLE_DISABLED", "禁用角色不能分配给用户"),
+    LAST_SUPER_ADMIN_REQUIRED("LAST_SUPER_ADMIN_REQUIRED", "系统必须保留至少一个启用的超级管理员用户"),
+
+    FORBIDDEN("FORBIDDEN", "没有权限执行此操作"),
+
+    ACCOUNT_ALREADY_EXISTS("ACCOUNT_ALREADY_EXISTS", "服务账户已存在"),
+    ACCOUNT_NOT_FOUND("ACCOUNT_NOT_FOUND", "服务账户不存在"),
+    CLIENT_USER_NOT_CONFIGURED("CLIENT_USER_NOT_CONFIGURED", "客户端用户服务尚未配置"),
+    CLIENT_USER_AUTHENTICATION_FAILED(
+            "CLIENT_USER_AUTHENTICATION_FAILED",
+            "客户端用户服务认证失败"
+    ),
+    CLIENT_USER_SERVICE_UNAVAILABLE(
+            "CLIENT_USER_SERVICE_UNAVAILABLE",
+            "客户端用户服务暂不可用"
+    ),
+    CLIENT_USER_REQUEST_FAILED("CLIENT_USER_REQUEST_FAILED", "客户端用户服务处理失败"),
+
+    MENU_NOT_FOUND("MENU_NOT_FOUND","菜单不存在"),
+    MENU_PARENT_NOT_FOUND("MENU_PARENT_NOT_FOUND", "父菜单不存在"),
+    MENU_ROUTE_REQUIRED(
+            "MENU_ROUTE_REQUIRED",
+            "页面菜单必须填写路由地址和组件路径"
+    ),
+    MENU_PERMISSION_REQUIRED(
+            "MENU_PERMISSION_REQUIRED",
+            "按钮菜单必须填写权限标识"
+    ),
+
+    COURSE_PACKAGE_CONFIGURATION_INVALID(
+            "COURSE_PACKAGE_CONFIGURATION_INVALID",
+            "系统必须且只能配置一个有效课包"
+    ),
+    PROJECT_NOT_FOUND("PROJECT_NOT_FOUND", "项目不存在"),
+    PROJECT_ORDER_INVALID("PROJECT_ORDER_INVALID", "项目顺序必须包含当前课包下的全部有效项目且不能重复"),
+    CLASS_NOT_FOUND("CLASS_NOT_FOUND", "班级不存在或已停课"),
+    CLASS_CONFIGURATION_INVALID("CLASS_CONFIGURATION_INVALID", "班级未配置授课教师"),
+    LIVE_COURSE_PACKAGE_MISMATCH("LIVE_COURSE_PACKAGE_MISMATCH", "班级与项目不属于同一课包"),
+    LIVE_COURSE_NOT_FOUND("LIVE_COURSE_NOT_FOUND", "直播课不存在"),
+    LIVE_COURSE_DELETE_FORBIDDEN(
+            "LIVE_COURSE_DELETE_FORBIDDEN",
+            "只有未开始的直播课可以删除"
+    ),
+    CRM_CLASS_NOT_FOUND("CRM_CLASS_NOT_FOUND", "CRM班级不存在"),
+    CRM_TEACHER_NOT_FOUND("CRM_TEACHER_NOT_FOUND", "CRM教师不存在"),
+    CRM_CLASS_CONFIGURATION_INVALID("CRM_CLASS_CONFIGURATION_INVALID", "CRM班级排课配置不合法"),
+    CRM_CLASS_STATUS_INVALID("CRM_CLASS_STATUS_INVALID", "班级状态只能是1或2"),
+    CRM_RECORD_INVALID("CRM_RECORD_INVALID", "录制状态只能是1或2"),
+    CRM_PACKAGE_PROJECT_EMPTY("CRM_PACKAGE_PROJECT_EMPTY", "课包下没有可用于排课的项目"),
+    CRM_TEACHER_ALREADY_EXISTS("CRM_TEACHER_ALREADY_EXISTS", "CRM教师已存在"),
+    CRM_TEACHER_USERNAME_ALREADY_EXISTS(
+            "CRM_TEACHER_USERNAME_ALREADY_EXISTS",
+            "教师账号已存在"
+    ),
+    CRM_TEACHER_ACCOUNT_ALREADY_BOUND(
+            "CRM_TEACHER_ACCOUNT_ALREADY_BOUND",
+            "后台账号已经绑定其他教师"
+    ),
+    CRM_TEACHER_USERNAME_INVALID("CRM_TEACHER_USERNAME_INVALID", "教师账号不能包含空白字符"),
+    CRM_TEACHER_ROLE_DUPLICATED("CRM_TEACHER_ROLE_DUPLICATED", "教师角色不能重复"),
+    CRM_STUDENT_LIST_INVALID("CRM_STUDENT_LIST_INVALID", "学员手机号列表不能为空"),
+    CRM_STUDENT_NOT_FOUND("CRM_STUDENT_NOT_FOUND", "存在未注册的学员手机号"),
+    CRM_IP_NOT_ALLOWED("CRM_IP_NOT_ALLOWED", "当前来源IP不允许访问CRM外部接口"),
+    CRM_CLIENT_IP_UNRESOLVED("CRM_CLIENT_IP_UNRESOLVED", "无法识别CRM请求的客户端IP"),
+    CRM_IP_WHITELIST_UNAVAILABLE(
+            "CRM_IP_WHITELIST_UNAVAILABLE",
+            "CRM外部接口白名单服务暂不可用"
+    ),
+    PROJECT_GENERATION_NOT_FOUND("PROJECT_GENERATION_NOT_FOUND", "项目生成配置尚未创建"),
+    PROJECT_GENERATION_ALREADY_EXISTS("PROJECT_GENERATION_ALREADY_EXISTS", "该项目已存在项目生成配置"),
+    PROJECT_REPORT_NOT_FOUND("PROJECT_REPORT_NOT_FOUND", "创业报告配置尚未创建"),
+    PROJECT_REPORT_ALREADY_EXISTS("PROJECT_REPORT_ALREADY_EXISTS", "该项目已存在创业报告配置"),
+    SANDTABLE_NOT_FOUND("SANDTABLE_NOT_FOUND", "项目沙盘尚未配置"),
+    SANDTABLE_ALREADY_EXISTS("SANDTABLE_ALREADY_EXISTS", "该项目已经配置沙盘"),
+    SANDTABLE_ATTRIBUTE_INVALID("SANDTABLE_ATTRIBUTE_INVALID", "存在不属于当前沙盘的属性"),
+    SANDTABLE_ATTRIBUTE_IN_USE(
+            "SANDTABLE_ATTRIBUTE_IN_USE",
+            "沙盘属性已被题目使用，请先解除题目关联"
+    ),
+    SANDTABLE_GAIN_INVALID("SANDTABLE_GAIN_INVALID", "存在不属于当前沙盘的预计学习收获"),
+    SANDTABLE_VIDEO_EMPTY("SANDTABLE_VIDEO_EMPTY", "沙盘视频不能为空"),
+    SANDTABLE_TREND_IMAGE_EMPTY("SANDTABLE_TREND_IMAGE_EMPTY", "收益趋势图不能为空"),
+    TASK_NOT_FOUND("TASK_NOT_FOUND", "项目任务尚未配置"),
+    TASK_ALREADY_EXISTS("TASK_ALREADY_EXISTS", "该项目已经配置任务"),
+    TASK_TYPE_INVALID("TASK_TYPE_INVALID", "任务类型或格式不合法"),
+    TASK_KEYWORDS_INVALID("TASK_KEYWORDS_INVALID", "任务关键词数量或长度不合法"),
+    TASK_PARTNER_INVALID("TASK_PARTNER_INVALID", "存在无效或已删除的合伙人"),
+    TASK_PARTNER_DUPLICATED("TASK_PARTNER_DUPLICATED", "不能重复选择同一个合伙人"),
+    TASK_PARTNER_SKILL_INVALID("TASK_PARTNER_SKILL_INVALID", "存在无效或已删除的 Skill"),
+    TASK_PARTNER_SKILL_DUPLICATED(
+            "TASK_PARTNER_SKILL_DUPLICATED",
+            "同一合伙人不能重复选择同一个 Skill"
+    ),
+    TASK_COMPANY_NAME_INVALID(
+            "TASK_COMPANY_NAME_INVALID",
+            "公司名称不能为空且不能超过 7 个字符"
+    ),
+    TASK_COMPANY_NAME_INDEX_INVALID(
+            "TASK_COMPANY_NAME_INDEX_INVALID",
+            "公司名称候选下标无效"
+    ),
+    TASK_COMPANY_NAME_DUPLICATED(
+            "TASK_COMPANY_NAME_DUPLICATED",
+            "公司名称候选不能重复"
+    ),
+    TASK_COMPANY_NAME_GENERATION_FAILED(
+            "TASK_COMPANY_NAME_GENERATION_FAILED",
+            "未能生成 60 个合法且不重复的公司名称"
+    ),
+
+    UNAUTHORIZED("UNAUTHORIZED", "请先登录"),
+    INVALID_TOKEN("INVALID_TOKEN", "登录状态无效，请重新登录"),
+    TOKEN_EXPIRED("TOKEN_EXPIRED", "登录已过期，请重新登录"),
+
+    QUESTION_NOT_FOUND("QUESTION_NOT_FOUND","题目不存在"),
+    COZE_NOT_CONFIGURED("COZE_NOT_CONFIGURED", "Coze工作流尚未启用或配置不完整"),
+    QUESTION_GUIDE_GENERATION_FAILED(
+            "QUESTION_GUIDE_GENERATION_FAILED",
+            "题目引导生成失败，请稍后重试"
+    ),
+
+    SKILL_NOT_FOUND("SKILL_NOT_FOUND", "Skill不存在"),
+    SKILL_ASSIGNED_TO_PARTNER(
+            "SKILL_ASSIGNED_TO_PARTNER",
+            "Skill已被合伙人绑定，请先解除关联"
+    ),
+
+    DICT_TYPE_NOT_FOUND("DICT_TYPE_NOT_FOUND","字典类型不存在"),
+    DICT_CODE_ALREADY_EXISTS("DICT_CODE_ALREADY_EXISTS","字典编码已存在"),
+    DICT_ITEM_NOT_FOUND("DICT_ITEM_NOT_FOUND", "字典项不存在"),
+    DICT_ITEM_VALUE_ALREADY_EXISTS(
+            "DICT_ITEM_VALUE_ALREADY_EXISTS",
+            "当前字典类型下的字典项值已存在"
+    );
+
+    private final String code;
+    private final String message;
+
+    ErrorCode(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
+    public String code() {
+        return code;
+    }
+
+    public String message() {
+        return message;
+    }
+}
